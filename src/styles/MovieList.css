@@ -3,13 +3,13 @@
   flex-wrap: wrap;
   justify-content: center;
   align-items: flex-start; /* Align items to the top */
-  padding: 80px;
-  gap: 20px; /* Add space between cards */
+  padding: 150px;
+  gap: 10px; /* Add space between cards */
 }
 
 .movie {
-  width: 220px; /* Increase width */
-  height: 440px; /* Increase height */
+  width: 150px; /* Increase width */
+  height: 300px; /* Increase height */
   margin: 10px;
   padding: 10px;
   border: 1px solid #ccc;

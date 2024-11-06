@@ -17,7 +17,7 @@
 
 .app-title {
   margin: 0;
-  font-size: 2em;
+  font-size: 1.5em;
 }
 
 .search-container {
@@ -55,29 +55,15 @@
 
 /* Adjust the main content to account for the fixed header */
 .main-content {
-  padding-top: 120px; /* Adjust based on the new height of the header */
+  padding-top: 30px; /* Adjust based on the new height of the header */
 }
 
-/* Media query for screens with a max-width of 480px */
-@media (max-width: 480px) {
-  .search-container {
-    flex-direction: column;
-    align-items: center;
-  }
-
-  .header-input, .button {
-    width: 100%;
-    max-width: 300px;
-  }
-}
-
-/* Media query for screens with a max-width of 320px */
 @media (max-width: 320px) {
-  .header-input, .button {
-    width: 100%;
-    max-width: 260px;
-    font-size: 0.9em;
-    margin-right: auto;
-    margin-left: auto;
+  .search-container {
+    margin-right: 80px;
+  }
+  .app-title{
+    align-content: center;
+    margin-left: -60px;
   }
 }

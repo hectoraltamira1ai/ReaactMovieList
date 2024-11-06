@@ -20,13 +20,8 @@ const MoviesList = () => {
   const apiKey = '20536129';
 
   useEffect(() => {
-    fetchInitialMovies();
-  }, []);
-
-  const fetchInitialMovies = async () => {
-    await fetchMovies(currentTitle, currentYear, 1);
-    await fetchMovies(currentTitle, currentYear, 2);
-  };
+    fetchMovies(currentTitle, currentYear, 1);
+  }, [currentTitle, currentYear]); // Include dependencies here
 
   const fetchMovies = async (title = '', year = '', page = 1) => {
     const searchTerm = title || 'movie';
@@ -40,6 +35,7 @@ const MoviesList = () => {
       if (data.Response === 'True') {
         setMovies((prevMovies) => (page === 1 ? data.Search : [...prevMovies, ...data.Search]));
       } else {
+        if (page === 1) setMovies([]);  // Clear movies if initial fetch fails
         setError(data.Error);
       }
     } catch (err) {
@@ -81,17 +77,16 @@ const MoviesList = () => {
     setCurrentTitle(title);
     setCurrentYear(year);
     setCurrentPage(1);
-    fetchMovies(title, year, 1);
-    fetchMovies(title, year, 2);
+    setMovies([]); // Clear previous results
+    fetchMovies(title, year, 1); // Fetch only the first page of results
   };
 
-  const handleReset = async () => {
+  const handleReset = () => {
     setCurrentTitle('');
     setCurrentYear('2024');
     setCurrentPage(1);
-    setMovies([]);
-    await fetchMovies('', '2024', 1);
-    await fetchMovies('', '2024', 2);
+    setMovies([]); // Clear previous results
+    fetchMovies('', '2024', 1); // Fetch only the first page of default results
   };
 
   return (
